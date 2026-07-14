@@ -1,0 +1,1263 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Moemen's Day 🎂</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Serif+Display:ital@0;1&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── TOKENS ─── */
+    :root {
+      --cream:      #faf7f4;
+      --offwhite:   #f5f0eb;
+      --sand:       #e8ddd4;
+      --mist:       #d4c4b8;
+      --warm-gray:  #a08878;
+      --taupe:      #7a5a50;
+      --cocoa:      #6b2d3e;
+      --espresso:   #4a1628;
+      --blush:      #e8c5c5;
+      --dusty-rose: #c47a7a;
+      --terracotta: #8b2252;
+      --gold:       #9e3060;
+      --gold-light: #c0506e;
+      --sage:       #60a080;
+      --font-display: 'DM Serif Display', serif;
+      --font-body:    'Cormorant Garamond', serif;
+      --font-sans:    'Lato', sans-serif;
+      --radius:     20px;
+      --shadow-soft: 0 8px 40px rgba(74,22,40,0.10);
+      --shadow-card: 0 4px 24px rgba(74,22,40,0.13);
+      --transition: 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--cream);
+      color: var(--espresso);
+      overflow-x: hidden;
+    }
+
+    /* ─── PAGES ─── */
+    .page {
+      display: none;
+      min-height: 100vh;
+      animation: fadeIn 0.7s ease forwards;
+    }
+    .page.active { display: block; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ═══════════════════════════════════════
+       PAGE 1 — INDEX
+    ═══════════════════════════════════════ */
+    #page-index {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background:
+        radial-gradient(ellipse 80% 60% at 60% 30%, #f0d0d8aa 0%, transparent 70%),
+        radial-gradient(ellipse 60% 80% at 20% 80%, #e8c0cc88 0%, transparent 70%),
+        var(--cream);
+      position: relative;
+      text-align: center;
+      padding: 40px 20px;
+    }
+    #page-index.active { display: flex; }
+
+    .index-ornament {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .index-ornament::before,
+    .index-ornament::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.12;
+    }
+    .index-ornament::before {
+      width: 500px; height: 500px;
+      top: -150px; right: -150px;
+      background: radial-gradient(circle, var(--gold) 0%, transparent 70%);
+    }
+    .index-ornament::after {
+      width: 400px; height: 400px;
+      bottom: -120px; left: -100px;
+      background: radial-gradient(circle, var(--dusty-rose) 0%, transparent 70%);
+    }
+
+    .index-content {
+      position: relative;
+      z-index: 1;
+      max-width: 560px;
+    }
+
+    .index-eyebrow {
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+    .index-eyebrow::before,
+    .index-eyebrow::after {
+      content: '';
+      display: inline-block;
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.6;
+    }
+
+    .index-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 8vw, 5.5rem);
+      line-height: 1.05;
+      color: var(--espresso);
+      margin-bottom: 10px;
+      font-weight: 400;
+    }
+    .index-title em {
+      font-style: italic;
+      color: var(--terracotta);
+    }
+
+    .index-subtitle {
+      font-family: var(--font-body);
+      font-size: clamp(1rem, 2.5vw, 1.35rem);
+      color: var(--taupe);
+      font-style: italic;
+      margin-bottom: 50px;
+      font-weight: 300;
+    }
+
+    .index-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 44px;
+      background: var(--espresso);
+      color: var(--cream);
+      border: none;
+      border-radius: 60px;
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: 0 8px 30px rgba(74,22,40,0.25);
+      position: relative;
+      overflow: hidden;
+    }
+    .index-btn::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--gold);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .index-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 40px rgba(74,22,40,0.3);
+    }
+    .index-btn:hover::after { opacity: 0.15; }
+
+    .btn-arrow {
+      font-size: 1.1rem;
+      transition: transform 0.3s;
+    }
+    .index-btn:hover .btn-arrow { transform: translateX(4px); }
+
+    .index-petal {
+      position: absolute;
+      font-size: 1.8rem;
+      opacity: 0.25;
+      animation: float 6s ease-in-out infinite;
+      pointer-events: none;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(10deg); }
+    }
+
+    /* ═══════════════════════════════════════
+       PAGE 2 — QUIZ
+    ═══════════════════════════════════════ */
+    #page-quiz {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 60px 20px;
+      background:
+        radial-gradient(ellipse 70% 50% at 30% 20%, #e8b8c888 0%, transparent 60%),
+        var(--offwhite);
+    }
+    #page-quiz.active { display: flex; }
+
+    .quiz-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .quiz-header h1 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      color: var(--espresso);
+      font-weight: 400;
+    }
+    .quiz-header h1 em { color: var(--terracotta); font-style: italic; }
+
+    .quiz-warning {
+      font-family: var(--font-sans);
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-top: 10px;
+      font-weight: 700;
+    }
+
+    .quiz-card {
+      background: #fff;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-soft);
+      padding: clamp(24px, 5vw, 44px);
+      width: 100%;
+      max-width: 640px;
+      border: 1px solid var(--sand);
+    }
+
+    .quiz-question {
+      margin-bottom: 36px;
+    }
+    .quiz-question:last-of-type { margin-bottom: 28px; }
+
+    .question-label {
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+      margin-bottom: 6px;
+    }
+
+    .question-text {
+      font-family: var(--font-body);
+      font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+      font-weight: 500;
+      color: var(--espresso);
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+
+    .option-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .option-label {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 13px 18px;
+      border-radius: 12px;
+      border: 1.5px solid var(--sand);
+      background: var(--cream);
+      cursor: pointer;
+      font-family: var(--font-body);
+      font-size: 1.05rem;
+      color: var(--cocoa);
+      transition: var(--transition);
+      user-select: none;
+    }
+    .option-label:hover {
+      border-color: var(--gold);
+      background: #fdfaf6;
+      transform: translateX(4px);
+    }
+    .option-label input[type="radio"] {
+      accent-color: var(--terracotta);
+      width: 17px; height: 17px;
+      flex-shrink: 0;
+    }
+    .option-label input[type="radio"]:checked + span {
+      color: var(--espresso);
+      font-weight: 500;
+    }
+
+    .quiz-divider {
+      height: 1px;
+      background: var(--sand);
+      margin: 28px 0;
+    }
+
+    .quiz-btn {
+      display: block;
+      width: 100%;
+      padding: 15px;
+      background: var(--espresso);
+      color: var(--cream);
+      border: none;
+      border-radius: 14px;
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: 0 6px 20px rgba(74,22,40,0.2);
+    }
+    .quiz-btn:hover {
+      background: var(--cocoa);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(74,22,40,0.28);
+    }
+
+    #quiz-result {
+      margin-top: 20px;
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--terracotta);
+      text-align: center;
+      min-height: 28px;
+      letter-spacing: 0.05em;
+    }
+
+    /* ═══════════════════════════════════════
+       PAGE 2.5 — PAUSE PAGE (TRANSITION)
+    ═══════════════════════════════════════ */
+    #page-pause {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 40px 20px;
+      background: 
+        radial-gradient(ellipse 80% 60% at 50% 50%, #f0d0d8aa 0%, transparent 70%),
+        var(--cream);
+      text-align: center;
+    }
+    #page-pause.active { display: flex; }
+
+    .pause-container {
+      background: #fff;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-soft);
+      padding: clamp(30px, 6vw, 50px);
+      width: 100%;
+      max-width: 560px;
+      border: 1px solid var(--sand);
+      animation: scaleUp 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @keyframes scaleUp {
+      from { transform: scale(0.9) translateY(10px); opacity: 0; }
+      to   { transform: scale(1) translateY(0); opacity: 1; }
+    }
+
+    .pause-emoji {
+      font-size: 3.5rem;
+      display: block;
+      margin-bottom: 20px;
+    }
+    .pause-title {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      color: var(--espresso);
+      margin-bottom: 10px;
+    }
+    .pause-subtitle {
+      font-family: var(--font-sans);
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      margin-bottom: 24px;
+    }
+    .pause-text {
+      font-family: var(--font-body);
+      font-size: 1.35rem;
+      line-height: 1.6;
+      color: var(--cocoa);
+      margin-bottom: 40px;
+    }
+    .pause-btn {
+      display: inline-block;
+      padding: 16px 50px;
+      background: var(--espresso);
+      color: var(--cream);
+      border: none;
+      border-radius: 50px;
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: 0 8px 30px rgba(74,22,40,0.2);
+    }
+    .pause-btn:hover {
+      background: var(--cocoa);
+      transform: translateY(-3px);
+      box-shadow: 0 14px 40px rgba(74,22,40,0.3);
+    }
+
+    /* ═══════════════════════════════════════
+       PAGE 3 — MAIN (CELEBRATION)
+    ═══════════════════════════════════════ */
+    #page-main {
+      display: none;
+      background: var(--cream);
+    }
+    #page-main.active { display: block; }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 420px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 24px 70px;
+      background:
+        radial-gradient(ellipse 90% 60% at 50% 40%, #e8b8c8cc 0%, transparent 65%),
+        linear-gradient(160deg, #edf0f7 0%, #d8e0ee 100%);
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle at 1px 1px, var(--mist) 1px, transparent 0);
+      background-size: 36px 36px;
+      opacity: 0.25;
+    }
+
+    .hero-tag {
+      font-family: var(--font-sans);
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 18px;
+      position: relative;
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 9vw, 6rem);
+      color: var(--espresso);
+      line-height: 1.05;
+      font-weight: 400;
+      position: relative;
+    }
+    .hero-title em {
+      color: var(--terracotta);
+      font-style: italic;
+    }
+
+    .hero-confetti-btn {
+      margin-top: 36px;
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 36px;
+      border: 2px solid var(--espresso);
+      background: transparent;
+      color: var(--espresso);
+      border-radius: 60px;
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .hero-confetti-btn:hover {
+      background: var(--espresso);
+      color: var(--cream);
+      transform: scale(1.05);
+    }
+
+    /* Gallery */
+    .section-header {
+      text-align: center;
+      padding: 70px 24px 44px;
+    }
+    .section-header .eyebrow {
+      font-family: var(--font-sans);
+      font-size: 0.7rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+    .section-header h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 5vw, 3.2rem);
+      color: var(--espresso);
+      font-weight: 400;
+    }
+    .section-header h2 em { color: var(--terracotta); }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 22px;
+      padding: 0 clamp(18px, 5vw, 60px) 70px;
+    }
+
+    .photo-card {
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: var(--shadow-card);
+      overflow: hidden;
+      transition: var(--transition);
+      border: 1px solid var(--sand);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+    .photo-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 20px 50px rgba(74,22,40,0.18);
+    }
+
+    .photo-card-img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      display: block;
+      background: var(--sand);
+    }
+
+    .photo-card-body {
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 80px;
+      text-align: center;
+    }
+    .photo-card-caption {
+      font-family: var(--font-body);
+      font-size: 1.05rem;
+      line-height: 1.4;
+      color: var(--cocoa);
+      font-weight: 400;
+    }
+    .photo-card-overlay {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--terracotta));
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .photo-card:hover .photo-card-overlay { opacity: 1; }
+
+    /* Letter section */
+    .letter-section {
+      padding: 70px clamp(18px, 8vw, 100px);
+      background: linear-gradient(135deg, #e8edf7, #d6dcea);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .letter-section::before {
+      content: '❝';
+      position: absolute;
+      top: 30px;
+      left: clamp(18px, 5vw, 60px);
+      font-size: clamp(80px, 15vw, 160px);
+      color: var(--mist);
+      font-family: Georgia, serif;
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .letter-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .letter-tag {
+      font-family: var(--font-sans);
+      font-size: 0.7rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+    }
+
+    .letter-name {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 6vw, 4rem);
+      color: var(--espresso);
+      font-weight: 400;
+      line-height: 1.1;
+      margin-bottom: 30px;
+    }
+    .letter-name em { color: var(--terracotta); font-style: italic; }
+
+    .letter-body {
+      font-family: var(--font-body);
+      font-size: clamp(1.15rem, 2.4vw, 1.35rem);
+      line-height: 1.8;
+      color: var(--cocoa);
+      font-weight: 300;
+      white-space: pre-line;
+    }
+
+    .letter-signature {
+      margin-top: 40px;
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-style: italic;
+      color: var(--terracotta);
+    }
+
+    .letter-divider {
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold), var(--terracotta));
+      border: none;
+      margin: 24px 0;
+    }
+
+    /* ─── FLIP CARDS SECTION ─── */
+    .cards-section {
+      width: 100%;
+      max-width: 760px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 70px 24px 90px;
+    }
+    .cards-section h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 5vw, 3.2rem);
+      color: var(--espresso);
+      margin-bottom: 12px;
+      font-weight: 400;
+    }
+    .cards-section > p {
+      font-family: var(--font-sans);
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 40px;
+    }
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+    .flip-card {
+      background: transparent;
+      height: 140px;
+      perspective: 1000px;
+      cursor: pointer;
+    }
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      transform-style: preserve-3d;
+    }
+    .flip-card.flipped .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+    .flip-card-front {
+      background: white;
+      box-shadow: var(--shadow-card);
+      border: 1px solid var(--sand);
+    }
+    .card-number {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      color: var(--terracotta);
+      margin-bottom: 4px;
+    }
+    .flip-card-front span:not(.card-number) {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      color: var(--gold);
+      letter-spacing: 1px;
+    }
+    .flip-card-back {
+      background: linear-gradient(135deg, var(--terracotta), var(--espresso));
+      color: white;
+      transform: rotateY(180deg);
+      font-size: 1.1rem;
+      font-weight: 400;
+      font-family: var(--font-body);
+      line-height: 1.4;
+      box-shadow: var(--shadow-soft);
+    }
+
+    /* ─── FOOTER ─── */
+    .footer {
+      text-align: center;
+      padding: 30px 20px;
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      color: var(--warm-gray);
+      border-top: 1px solid var(--sand);
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 600px) {
+      .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding: 0 16px 50px;
+      }
+      .letter-section {
+        padding: 50px 18px;
+      }
+      .hero { min-height: 340px; padding: 60px 18px 50px; }
+      .cards-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+    }
+
+    /* ─── WRONG ANSWER TOAST ─── */
+    .wrong-toast {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.85);
+      background: #fff;
+      border: 2px solid var(--terracotta);
+      border-radius: 20px;
+      padding: 30px 40px;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(74,22,40,0.25);
+      z-index: 9999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      max-width: 320px;
+      width: 90%;
+    }
+    .wrong-toast.show {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+      pointer-events: auto;
+    }
+    .wrong-toast-emoji {
+      font-size: 3rem;
+      display: block;
+      margin-bottom: 12px;
+      animation: shake 0.4s ease;
+    }
+    @keyframes shake {
+      0%,100% { transform: translateX(0); }
+      25%      { transform: translateX(-8px); }
+      75%      { transform: translateX(8px); }
+    }
+    .wrong-toast-text {
+      font-family: var(--font-sans);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--espresso);
+      line-height: 1.5;
+    }
+    .wrong-toast-close {
+      margin-top: 18px;
+      display: inline-block;
+      padding: 8px 24px;
+      background: var(--espresso);
+      color: var(--cream);
+      border: none;
+      border-radius: 30px;
+      font-family: var(--font-sans);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .wrong-toast-close:hover { background: var(--terracotta); }
+
+    .toast-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(74,22,40,0.35);
+      z-index: 9998;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    .toast-overlay.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* wrong option highlight */
+    .option-label.wrong-picked {
+      border-color: var(--terracotta) !important;
+      background: #fdf0f3 !important;
+    }
+    .option-label.correct-picked {
+      border-color: var(--sage) !important;
+      background: #f0fdf4 !important;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ═════════════════════════════════════
+       PAGE 1: INDEX
+  ═════════════════════════════════════ -->
+  <section id="page-index" class="page active">
+    <div class="index-ornament"></div>
+
+    <!-- floating petals -->
+    <span class="index-petal" style="top:12%;left:8%;animation-delay:0s">🌸</span>
+    <span class="index-petal" style="top:70%;left:5%;animation-delay:1.5s;font-size:1.2rem">✿</span>
+    <span class="index-petal" style="top:20%;right:10%;animation-delay:0.8s">🌷</span>
+    <span class="index-petal" style="bottom:15%;right:7%;animation-delay:2.2s;font-size:1.3rem">🌸</span>
+    <span class="index-petal" style="bottom:28%;left:15%;animation-delay:3s;font-size:1rem">✿</span>
+
+    <div class="index-content">
+      <div class="index-eyebrow">a special day</div>
+      <h1 class="index-title">
+        Today is<br><em>Moemen's</em><br>Birthday
+      </h1>
+      <p class="index-subtitle">Let the celebration begin ✨</p>
+      <button class="index-btn" onclick="showPage('page-quiz')">
+        <span>Start the Quiz</span>
+        <span class="btn-arrow">→</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- ═════════════════════════════════════
+       PAGE 2: QUIZ
+  ═════════════════════════════════════ -->
+  <section id="page-quiz" class="page">
+    <div class="quiz-header">
+      <h1><em>Quick Quiz</em> for Moemen!</h1>
+      <p class="quiz-warning">Answer correctly to unlock the celebration!</p>
+    </div>
+
+    <div class="quiz-card">
+
+      <!-- Q1 -->
+      <div class="quiz-question">
+        <p class="question-label">Question 1</p>
+        <p class="question-text">How many days are left until our story starts a new chapter?</p>
+        <div class="option-list">
+          <label class="option-label">
+            <input type="radio" name="q1" value="wrong" />
+            <span>Too many.</span>
+          </label>
+          <label class="option-label">
+            <input type="radio" name="q1" value="wrong" />
+            <span>Not enough.</span>
+          </label>
+          <label class="option-label">
+            <input type="radio" name="q1" value="correct" />
+            <span>Close enough to start smiling every day. 🤍</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="quiz-divider"></div>
+
+      <!-- Q2 -->
+      <div class="quiz-question">
+        <p class="question-label">Question 2</p>
+        <p class="question-text">Who's going to ask for "just one more picture"... 20 times? 📸</p>
+        <div class="option-list">
+          <label class="option-label">
+            <input type="radio" name="q2" value="wrong" />
+            <span>You.</span>
+          </label>
+          <label class="option-label">
+            <input type="radio" name="q2" value="wrong" />
+            <span>Me.</span>
+          </label>
+          <label class="option-label">
+            <input type="radio" name="q2" value="correct" />
+            <span>We both know the answer. 😂🤍</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="quiz-divider"></div>
+
+      <!-- Q3 -->
+      <div class="quiz-question">
+        <p class="question-label">Question 3</p>
+        <p class="question-text">Which chapter are you most excited to start?</p>
+        <div class="option-list">
+          <label class="option-label">
+            <input type="radio" name="q3" value="wrong" />
+            <span>The chapter where we finally meet.</span>
+          </label>
+          <label class="option-label">
+            <input type="radio" name="q3" value="wrong" />
+            <span>The chapter where we get engaged.</span>
+          </label>
+          <label class="option-label">
+            <input type="radio" name="q3" value="correct" />
+            <span>Every chapter... as long as we're writing it together. 🤍</span>
+          </label>
+        </div>
+      </div>
+
+      <button class="quiz-btn" onclick="checkAnswers()">Confirm Answers</button>
+      <div id="quiz-result"></div>
+
+    </div>
+  </section>
+
+  <!-- ═════════════════════════════════════
+       PAGE 2.5: PAUSE (TRANSITION)
+  ═════════════════════════════════════ -->
+  <section id="page-pause" class="page">
+    <div class="pause-container">
+      <span class="pause-emoji">⚠️</span>
+      <h1 class="pause-title">Pause...</h1>
+      <p class="pause-subtitle">Take a deep breath.</p>
+      <p class="pause-text">You're only one month away from meeting the girl you've been calling every day ❤</p>
+      <button class="pause-btn" onclick="showPage('page-main'); setTimeout(fireConfetti, 500);">OK</button>
+    </div>
+  </section>
+
+  <!-- ═════════════════════════════════════
+       PAGE 3: MAIN CELEBRATION
+  ═════════════════════════════════════ -->
+  <section id="page-main" class="page">
+
+    <!-- Hero -->
+    <div class="hero">
+      <div class="hero-tag">✦ a celebration ✦</div>
+      <h1 class="hero-title">Let's Celebrate<br><em>Moemen!</em> 🎂</h1>
+      <button class="hero-confetti-btn" onclick="fireConfetti()">
+        <span>🎊</span> Celebrate!
+      </button>
+    </div>
+
+    <!-- Gallery -->
+    <div class="section-header">
+      <p class="eyebrow">✦ memories ✦</p>
+      <h2>Our <em>Beautiful</em> Moments</h2>
+    </div>
+
+    <div class="gallery-grid">
+      <!-- Photo 1 -->
+      <div class="photo-card">
+        <img class="photo-card-img" src="photo1.jpg" alt="The first flowers" loading="lazy" />
+        <div class="photo-card-body">
+          <p class="photo-card-caption">The first flowers… the beginning of so many beautiful little moments🌹</p>
+        </div>
+        <div class="photo-card-overlay"></div>
+      </div>
+
+      <!-- Photo 2 -->
+      <div class="photo-card">
+        <img class="photo-card-img" src="photo2.jpg" alt="Valentine's sweetness" loading="lazy" />
+        <div class="photo-card-body">
+          <p class="photo-card-caption">A little sweetness on Valentine’s Day… with a lot of love behind it. 🤍</p>
+        </div>
+        <div class="photo-card-overlay"></div>
+      </div>
+
+      <!-- Photo 3 -->
+      <div class="photo-card">
+        <img class="photo-card-img" src="photo3.jpg" alt="Screen memory" loading="lazy" />
+        <div class="photo-card-body">
+          <p class="photo-card-caption">I wished you were standing right beside me that day… but seeing your smile through the screen was a memory I’ll always keep🤍</p>
+        </div>
+        <div class="photo-card-overlay"></div>
+      </div>
+
+      <!-- Photo 4 -->
+      <div class="photo-card">
+        <img class="photo-card-img" src="photo4.jpg" alt="Wear it with love" loading="lazy" />
+        <div class="photo-card-body">
+          <p class="photo-card-caption">Every time I wear it… I remember the love hidden in this little gift🤍</p>
+        </div>
+        <div class="photo-card-overlay"></div>
+      </div>
+
+      <!-- Photo 5 -->
+      <div class="photo-card">
+        <img class="photo-card-img" src="photo5.jpg" alt="Handwriting" loading="lazy" />
+        <div class="photo-card-body">
+          <p class="photo-card-caption">Your words, your handwriting... a little piece of you I'll always keep❤</p>
+        </div>
+        <div class="photo-card-overlay"></div>
+      </div>
+
+      <!-- Photo 6 -->
+      <div class="photo-card">
+        <img class="photo-card-img" src="photo6.jpg" alt="Simplest ways" loading="lazy" />
+        <div class="photo-card-body">
+          <p class="photo-card-caption">You make me smile in the simplest ways… and I’m so grateful for every moment with you 🥰</p>
+        </div>
+        <div class="photo-card-overlay"></div>
+      </div>
+    </div>
+
+    <!-- Letter Section -->
+    <div class="letter-section">
+      <div class="letter-inner">
+        <p class="letter-tag">✦ from the heart ✦</p>
+        <h2 class="letter-name">Happy Birthday, <em>my love</em> ❤</h2>
+        <hr class="letter-divider" />
+
+        <p class="letter-body">I don’t think words are enough to describe how grateful I am for you 
+
+        You became a beautiful part of my life, and I’m so thankful for every moment, every laugh, and every little memory we’ve created together.
+
+        I couldn’t be part of your birthday the way I wished…
+        but I know our time together will make up for every missed moment🤗
+
+        I’m so excited to finally spend time with you... no more "Can you hear me?" every two minutes😂🤍
+
+        Thank you for being you, and for showing me that something beautiful can grow even from a distance.. 
+
+        See you in every dream I have for my future... and very soon, in real life❤</p>
+
+        <hr class="letter-divider" style="margin: 28px 0;" />
+        <div class="letter-signature">Your girl, Rayan ❤</div>
+      </div>
+    </div>
+
+    <!-- Flip Cards Section -->
+    <div class="cards-section">
+      <h2>Six things I want you to know.</h2>
+      <p>Tap each card to reveal🤍</p>
+
+      <div class="cards-grid">
+        <!-- Card 1 -->
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <span class="card-number">1</span>
+              <span>tap me 🤍</span>
+            </div>
+            <div class="flip-card-back">You make love feel like peace.</div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <span class="card-number">2</span>
+              <span>tap me 🤍</span>
+            </div>
+            <div class="flip-card-back">The more I know you, the more I admire you.</div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <span class="card-number">3</span>
+              <span>tap me 🤍</span>
+            </div>
+            <div class="flip-card-back">You bring out the best in me.</div>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <span class="card-number">4</span>
+              <span>tap me 🤍</span>
+            </div>
+            <div class="flip-card-back">You're worth the wait.</div>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <span class="card-number">5</span>
+              <span>tap me 🤍</span>
+            </div>
+            <div class="flip-card-back">You always showed up.</div>
+          </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <span class="card-number">6</span>
+              <span>tap me 🤍</span>
+            </div>
+            <div class="flip-card-back">I hope you always see yourself the way I see you.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">Made with ❤ · Moemen's Day · 2026</div>
+
+  </section>
+
+  <!-- Wrong Answer Toast -->
+  <div class="toast-overlay" id="toastOverlay" onclick="closeToast()"></div>
+  <div class="wrong-toast" id="wrongToast">
+    <span class="wrong-toast-emoji">😡</span>
+    <p class="wrong-toast-text">No birthday celebration for you then! 🎂</p>
+    <button class="wrong-toast-close" onclick="closeToast()">Try Again</button>
+  </div>
+
+  <!-- ═════════════════════════════════════
+       SCRIPTS
+  ═════════════════════════════════════ -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+  <script>
+    /* Page navigation */
+    function showPage(id) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      const target = document.getElementById(id);
+      if (target) {
+        target.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+
+    /* Toast helpers */
+    function showToast() {
+      document.getElementById('wrongToast').classList.add('show');
+      document.getElementById('toastOverlay').classList.add('show');
+      // re-trigger shake animation
+      const emoji = document.querySelector('.wrong-toast-emoji');
+      emoji.style.animation = 'none';
+      emoji.offsetHeight; // reflow
+      emoji.style.animation = '';
+    }
+    function closeToast() {
+      document.getElementById('wrongToast').classList.remove('show');
+      document.getElementById('toastOverlay').classList.remove('show');
+    }
+
+    /* Real-time option checking — fires on each radio change */
+    document.querySelectorAll('input[type="radio"]').forEach(radio => {
+      radio.addEventListener('change', function () {
+        const label = this.closest('.option-label');
+        // clear siblings highlights
+        const siblings = document.querySelectorAll(`input[name="${this.name}"]`);
+        siblings.forEach(r => r.closest('.option-label').classList.remove('wrong-picked','correct-picked'));
+
+        if (this.value === 'wrong') {
+          label.classList.add('wrong-picked');
+          // uncheck so they can't proceed with wrong answer
+          setTimeout(() => { this.checked = false; label.classList.remove('wrong-picked'); }, 800);
+          showToast();
+        } else {
+          label.classList.add('correct-picked');
+          checkAllCorrect();
+        }
+      });
+    });
+
+    /* Check if all 3 are correctly answered → advance to PAUSE PAGE */
+    function checkAllCorrect() {
+      const questions = ["q1", "q2", "q3"];
+      const allDone = questions.every(q => {
+        const checked = document.querySelector(`input[name="${q}"]:checked`);
+        return checked && checked.value === 'correct';
+      });
+      if (allDone) {
+        setTimeout(() => showPage('page-pause'), 900);
+      }
+    }
+
+    /* Keep submit button but now it just double-checks */
+    function checkAnswers() {
+      const questions = ["q1", "q2", "q3"];
+      const allDone = questions.every(q => {
+        const checked = document.querySelector(`input[name="${q}"]:checked`);
+        return checked && checked.value === 'correct';
+      });
+      if (!allDone) {
+        document.getElementById("quiz-result").textContent = "Please choose the correct answers first! 🙏";
+      } else {
+        setTimeout(() => showPage('page-pause'), 700);
+      }
+    }
+
+    /* Flip cards toggle */
+    document.querySelectorAll('.flip-card').forEach(card => {
+      card.addEventListener('click', function () {
+        this.classList.toggle('flipped');
+      });
+    });
+
+    /* Confetti effect */
+    function fireConfetti() {
+      confetti({ particleCount: 220, spread: 170, origin: { y: 0.55 },
+        colors: ['#c9a96e','#e8c5b8','#b57460','#9aab96','#e2c98a'] });
+      setTimeout(() =>
+        confetti({ particleCount: 80, angle: 60, spread: 60, origin: { x: 0, y: 0.7 } }), 300);
+      setTimeout(() =>
+        confetti({ particleCount: 80, angle: 120, spread: 60, origin: { x: 1, y: 0.7 } }), 450);
+    }
+  </script>
+
+</body>
+</html>
